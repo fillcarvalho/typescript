@@ -30,6 +30,8 @@ const product = {
 
 enum Role { ADMIN = 5, READ_ONLY = 8, AUTHOR = 'AUTHOR'}
 
+type strInt = string | number;
+
 // This is better because you proffit of the Type inference
 const person = {
   name: "Filipe Costa",
