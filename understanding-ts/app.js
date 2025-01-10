@@ -1,15 +1,3 @@
-// const person: {
-//   name: string;
-//   age: number;
-// } = {
-//   name: "Filipe Costa",
-//   age: 30,
-// };
-// This is better because you proffit of the Type inference
-var person = {
-    name: "Filipe Costa",
-    age: 30,
-};
 // You can also have nested objects
 var product = {
     id: "abc1",
@@ -30,4 +18,23 @@ var product = {
     description: string;
   }
 */
+// const person: {
+//   name: string;
+//   age: number;
+// } = {
+//   name: "Filipe Costa",
+//   age: 30,
+// };
+// This is better because you proffit of the Type inference
+var person = {
+    name: "Filipe Costa",
+    age: 30,
+    hobbies: ['run', 'play', 'grill']
+};
+var favoriteActivities; // Almost never use never as variable type
+favoriteActivities = ['asdasd'];
+for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
+    var hobby = _a[_i];
+    console.log(hobby);
+}
 console.log(person.name);

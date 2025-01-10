@@ -19,7 +19,7 @@ const product = {
     }
   */
 
-    
+
 
 // const person: {
 //   name: string;
@@ -33,8 +33,14 @@ const product = {
 const person = {
   name: "Filipe Costa",
   age: 30,
+  hobbies: ['run', 'play', 'grill']
 };
 
+let favoriteActivities: string[]; // Almost never use never as variable type
+favoriteActivities = ['asdasd'];
 
+for (const hobby of person.hobbies ) {
+    console.log(hobby.toUpperCase()) // THe typscript mapps al the string functions because we declared the variable type
+}
 
 console.log(person.name);
