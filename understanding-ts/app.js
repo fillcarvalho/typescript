@@ -1,15 +1,33 @@
-console.log("Your codeaaaaa...");
-function add(n1, n2, showResult, phrase) {
-    var result = n1 + n2;
-    if (showResult) {
-        console.log(phrase + result);
-    }
-    else {
-        return n1 + n2;
-    }
-}
-var number1 = 5;
-var number2 = 2.8;
-var printResult = true;
-var resultPhrase = 'Result is: ';
-add(number1, number2, printResult, resultPhrase);
+// const person: {
+//   name: string;
+//   age: number;
+// } = {
+//   name: "Filipe Costa",
+//   age: 30,
+// };
+// This is better because you proffit of the Type inference
+var person = {
+    name: "Filipe Costa",
+    age: 30,
+};
+// You can also have nested objects
+var product = {
+    id: "abc1",
+    price: 12.99,
+    tags: ["great-offer", "hot-and-new"],
+    details: {
+        title: "Red Carpet",
+        description: "A great carpet - almost brand-new!",
+    },
+};
+/*
+{
+  id: string;
+  price: number;
+  tags: string[];
+  details: {
+    title: string;
+    description: string;
+  }
+*/
+console.log(person.name);
