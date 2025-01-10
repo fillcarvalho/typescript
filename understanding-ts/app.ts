@@ -18,9 +18,6 @@ const product = {
       description: string;
     }
   */
-
-
-
 // const person: {
 //   name: string;
 //   age: number;
@@ -30,14 +27,26 @@ const product = {
 // };
 
 // This is better because you proffit of the Type inference
-const person = {
+const person: {
+    name: string;
+    age: number;
+    hobbies: string[];
+    role: [number, string]
+} = {
   name: "Filipe Costa",
   age: 30,
-  hobbies: ['run', 'play', 'grill']
+  hobbies: ['run', 'play', 'grill'],
+  role: [2, 'Author']
 };
 
-let favoriteActivities: string[]; // Almost never use never as variable type
-favoriteActivities = ['asdasd'];
+person.role.push('admin');
+// person.role[1] = 10;
+// Tuples also validate the number of elements in an array
+// person.role = [0,'admin','user']
+
+
+// let favoriteActivities: string[]; // Almost never use never as variable type
+// favoriteActivities = ['asdasd'];
 
 for (const hobby of person.hobbies ) {
     console.log(hobby.toUpperCase()) // THe typscript mapps al the string functions because we declared the variable type

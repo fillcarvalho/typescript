@@ -29,12 +29,15 @@ var product = {
 var person = {
     name: "Filipe Costa",
     age: 30,
-    hobbies: ['run', 'play', 'grill']
+    hobbies: ['run', 'play', 'grill'],
+    role: [2, 'Author']
 };
-var favoriteActivities; // Almost never use never as variable type
-favoriteActivities = ['asdasd'];
+person.role.push('admin');
+// person.role[1] = 10;
+// let favoriteActivities: string[]; // Almost never use never as variable type
+// favoriteActivities = ['asdasd'];
 for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
     var hobby = _a[_i];
-    console.log(hobby);
+    console.log(hobby.toUpperCase()); // THe typscript mapps al the string functions because we declared the variable type
 }
 console.log(person.name);
