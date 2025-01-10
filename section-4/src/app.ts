@@ -43,4 +43,28 @@ if (button) {
 }
 
 
-const print2: (a:number) => void = a => console.log(a)
+const print2: (a:number) => void = a => console.log(a);
+
+// Default parameters
+const add3 = (a:number, b:number = 1) => console.log(a+b);
+
+// SPread operator
+const hobbies = ['Sports', 'Cooking'];
+const activeHobbies = ['Hiking', ...hobbies]
+
+activeHobbies.push(hobbies[0], hobbies[1]);
+
+activeHobbies.push(...hobbies);
+
+const person = {
+    name: 'Filipe',
+    weight: 92
+};
+
+// Will inject all the parameters there
+// We are not creating a copy of the object, we are only
+// pointing the the sabe object. Changes in one will change both
+const copiedPerson2 = person;
+
+// Correct way
+const copiedPerson = {...person}
