@@ -68,3 +68,23 @@ const copiedPerson2 = person;
 
 // Correct way
 const copiedPerson = {...person}
+
+
+// Rest parameters
+const add4 = (...numbers: number[]) => {
+    // Reduce method goes to all of the array and get as the currentResult the return of the last function call
+    // and the curentValue as the current array value.
+    // The parameter after , is the starting value
+    return numbers.reduce((curentResult, curentValue) => curentResult + curentValue, 0)
+}
+
+const addedNumbers = add4(1,2,3,4);
+const addedNumbers2 = add4(1,2,3,4,123,54,34356,5476657,568,123,34);
+
+// Combine it with Tuples
+const add5 = (...numbers: [number, number, number]) => {
+    return numbers.reduce((curentResult, curentValue) => curentResult + curentValue, 0)
+}
+
+// Only three paremeters
+const addedNumbers3 = add5(1,2,3);
