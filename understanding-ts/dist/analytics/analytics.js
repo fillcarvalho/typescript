@@ -1,3 +1,8 @@
 "use strict";
-console.log("11111");
+let logged;
+function sendAnalytics(data) {
+    console.log(data);
+    logged = true;
+}
+sendAnalytics('The data');
 //# sourceMappingURL=analytics.js.map
