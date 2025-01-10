@@ -26,20 +26,19 @@ const product = {
 //   age: 30,
 // };
 
+// enum Role { ADMIN, READ_ONLY, AUTHOS }
+
+enum Role { ADMIN = 5, READ_ONLY = 8, AUTHOR = 'AUTHOR'}
+
 // This is better because you proffit of the Type inference
-const person: {
-    name: string;
-    age: number;
-    hobbies: string[];
-    role: [number, string]
-} = {
+const person = {
   name: "Filipe Costa",
   age: 30,
   hobbies: ['run', 'play', 'grill'],
-  role: [2, 'Author']
+  role: Role.READ_ONLY
 };
 
-person.role.push('admin');
+// person.role.push('admin');
 // person.role[1] = 10;
 // Tuples also validate the number of elements in an array
 // person.role = [0,'admin','user']
@@ -50,6 +49,10 @@ person.role.push('admin');
 
 for (const hobby of person.hobbies ) {
     console.log(hobby.toUpperCase()) // THe typscript mapps al the string functions because we declared the variable type
+}
+
+if ( person.role === Role.READ_ONLY ) {
+    console.log("READ ONLY");
 }
 
 console.log(person.name);
