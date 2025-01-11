@@ -74,3 +74,14 @@ function countAndDescribe<T extends Lengthy>( element: T ): [T, string] {
 }
 
 console.log(countAndDescribe( ['Sports', 'Cooking'] ));
+
+// Keyof
+
+// TS cannot be sure if the key is part of the object, so it just reports an error
+// if you specify that T is an object and U extends keyof T, than TS now knows 
+// that key must be part of the object
+function extractAndConvert<T extends object, U extends keyof T>( obj: T, key: U ) {
+    return 'Value: ' + obj[key];
+}
+
+console.log( extractAndConvert({name: 'Filipe'}, 'name') )
