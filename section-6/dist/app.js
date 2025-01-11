@@ -100,3 +100,22 @@ const error = {
     username: "Must start with a caracter",
     whatever: "Whatever message",
 };
+
+const fetchedUserData = {
+    id: 'ui1',
+    name: 'Filipe',
+    job: { title: 'FE Webdeveloper', description: 'Athlos Game'}
+}
+// Would work
+console.log(fetchedUserData.job.title);
+
+
+// Sometimes, you dont't have all the information when you fetch an user and you need to treat it
+const fetchedUserData2 = {
+    id: 'ui1',
+    name: 'Filipe',
+    // job: { title: 'FE Webdeveloper', description: 'Athlos Game'}
+}
+
+// it will log ig JOB is declared
+console.log(fetchedUserData2?.job?.title);
