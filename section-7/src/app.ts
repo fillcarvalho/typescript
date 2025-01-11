@@ -46,8 +46,31 @@ const merged = merge({name: 'Filipe'}, {age: 30});
 // console.log(merged.name, merged.age);
 
 // We can do that with Generic Functions
-function merge2<T,U>( objA: T, objB: U ) {
+function merge2<T extends object,U extends object>( objA: T, objB: U ) {
     return Object.assign(objA, objB)
 }
 
 const merged2 = merge2({name: 'Filipe'}, {age: 30});
+
+console.log("Merged Object:", merged2);
+
+
+// Another Generic function
+// We just don't cabe about the type, we just care that the parameter has a length property
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>( element: T ): [T, string] {
+    let descriptionText = 'Got no value.'
+
+    if ( element.length === 1) {
+        descriptionText = 'Got 1 element';
+    } else if ( element.length > 1) {
+        descriptionText = 'Got ' + element.length + ' element';
+    }
+
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe( ['Sports', 'Cooking'] ));

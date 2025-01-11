@@ -36,3 +36,15 @@ function merge2(objA, objB) {
     return Object.assign(objA, objB);
 }
 const merged2 = merge2({ name: 'Filipe' }, { age: 30 });
+console.log("Merged Object:", merged2);
+function countAndDescribe(element) {
+    let descriptionText = 'Got no value.';
+    if (element.length === 1) {
+        descriptionText = 'Got 1 element';
+    }
+    else if (element.length > 1) {
+        descriptionText = 'Got ' + element.length + ' element';
+    }
+    return [element, descriptionText];
+}
+console.log(countAndDescribe(['Sports', 'Cooking']));
