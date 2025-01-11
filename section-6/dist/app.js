@@ -67,3 +67,22 @@ function moveAnimal(animal) {
 }
 moveAnimal({ type: 'bird', flyingSpeed: 10 });
 moveAnimal({ type: 'horse', runningSpeed: 100 });
+// Working with TypeCasting
+// TS knows that P is a Patagtaph because it's a p tag
+const paragraph = document.querySelector('p');
+// TS doesn't know the object type because it's returned by ID
+const input = document.getElementById('input');
+// Would work, but TS doesn't accept because he doesn't know that input is a input
+// input.value = 'Hi there';
+// TS now knows the type
+const input2 = document.getElementById('input');
+const input3 = document.getElementById('input2');
+input2.value = 'Hi there 1';
+input3.value = 'Hi there 2';
+// When you ARE SURE that this will not return null, you can just add a ! in the end
+const input4 = document.getElementById('input3');
+// When you ARE SURE that this will not return null, you can just add a ! in the end
+const input5 = document.getElementById('input3');
+if (input5) {
+    input5.value = 'Hi there 3';
+}
