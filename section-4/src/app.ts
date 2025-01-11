@@ -42,7 +42,6 @@ if (button) {
     button.addEventListener('click', event => console.log(event))
 }
 
-
 const print2: (a:number) => void = a => console.log(a);
 
 // Default parameters
@@ -57,7 +56,7 @@ activeHobbies.push(hobbies[0], hobbies[1]);
 activeHobbies.push(...hobbies);
 
 const person = {
-    name: 'Filipe',
+    firstName: 'Filipe',
     weight: 92
 };
 
@@ -88,3 +87,21 @@ const add5 = (...numbers: [number, number, number]) => {
 
 // Only three paremeters
 const addedNumbers3 = add5(1,2,3);
+
+// Object Destructuring works as list in php: list( $1, $2, $3 ) = ['first', 'second', 'third']
+// Doesn't change the original array
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobby1);
+console.log(hobby2);
+
+// It needs to have the same name of the object property
+const { firstName, weight } = person;
+console.log(firstName);
+console.log(weight);
+
+// We can also create it with a new name
+const { firstName: firstName2, weight: weight2 } = person;
+console.log(firstName2);
+console.log(weight2);
+
+
