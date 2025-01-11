@@ -119,3 +119,12 @@ const fetchedUserData2 = {
 
 // it will log ig JOB is declared
 console.log(fetchedUserData2?.job?.title);
+
+const userInput = '';
+// Will returno Default even if userInput = '', for example
+const storedData = userInput || 'Default';
+// Will returno Default only if userInput is undefined or null
+const storedData2 = userInput ?? 'Default';
+
+console.log(storedData)
+console.log(storedData2)
