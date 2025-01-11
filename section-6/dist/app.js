@@ -1,29 +1,29 @@
 "use strict";
 const e1 = {
-    name: 'Mike',
+    name: "Mike",
     startDate: new Date(),
-    privileges: ['hire', 'fire']
+    privileges: ["hire", "fire"],
 };
 // Typeguards are there to help you to identify the type of the variable and decide what you need to do with that
 // MAybe you have functions taht work with different variable types
 function test(a, b) {
-    if (typeof a === 'number' || typeof b === 'number') {
+    if (typeof a === "number" || typeof b === "number") {
         return a.toString() + b.toString();
     }
     return a + b;
 }
 function printEmployeeInformation(emp) {
     console.log("Empname", emp.name);
-    if ('privileges' in emp) {
+    if ("privileges" in emp) {
         console.log("Privileges:", emp.privileges);
     }
-    if ('startDate' in emp) {
+    if ("startDate" in emp) {
         console.log("StartDate:", emp.startDate);
     }
 }
 let e2 = {
-    name: 'Mike',
-    privileges: ['Hire', 'Fire']
+    name: "Mike",
+    privileges: ["Hire", "Fire"],
 };
 // It's going to print the startdate because e1 has one
 printEmployeeInformation(e1);
@@ -32,7 +32,7 @@ printEmployeeInformation(e2);
 // You can also use it with Classes
 class Car {
     drive() {
-        console.log('Driving');
+        console.log("Driving");
     }
 }
 class Truck {
@@ -53,3 +53,17 @@ function useVehicle(vehicle) {
 }
 useVehicle(v1);
 useVehicle(v2);
+function moveAnimal(animal) {
+    let speed;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+            break;
+    }
+    console.log("Moving the animal with speed:" + speed);
+}
+moveAnimal({ type: 'bird', flyingSpeed: 10 });
+moveAnimal({ type: 'horse', runningSpeed: 100 });
