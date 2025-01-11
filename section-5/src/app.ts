@@ -48,6 +48,8 @@ dep1.printEmployeeInformation();
 
 // You can declare the class properties directly at the constructor
 class Department2 {
+    protected employees: string[] = [];
+
   // Readyonly add an extra typesafe
   constructor(private readonly id: number, private name: string) {}
 
@@ -55,6 +57,16 @@ class Department2 {
     console.log(`Department ${this.id}: ${this.name}`);
     console.log("Department", this);
   }
+
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
+
+  printEmployeeInformation() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+  }
+
 }
 
 const dep2 = new Department2(1, "Department 2");
@@ -75,16 +87,43 @@ const itDepartment = new ITDepartment(2, ["Filipe", "Lucas", "Mike"]);
 itDepartment.describe();
 
 class accountingDepartment extends Department2 {
+
+  private lastReport: string;
+
+  get mostRecentReport() {
+    if ( this.lastReport ) {
+        return this.lastReport;
+    }
+    throw new Error('No report found');
+  }
+
+  set mostRecentReport( text: string ) {
+    if (!text) {
+        throw new Error('Invalid parameter');
+    }
+    this.addReport(text);
+  }
+
   constructor(id: number, private reports: string[]) {
     super(id, "Accounting");
+    this.lastReport = reports[0]
   }
 
   addReport(text: string) {
     this.reports.push(text);
+    this.lastReport = text;
   }
 
   printReports() {
     console.log(this.reports);
+  }
+
+  addEmployee(employee: string): void {
+      if ( employee === 'Filipe' ) {
+        return;
+      }
+      this.employees.push(employee)
+
   }
 }
 
@@ -94,3 +133,9 @@ const accountingDep = new accountingDepartment(4, []);
 accountingDep.addReport('Problem found');
 
 accountingDep.printReports();
+
+console.log(accountingDep.mostRecentReport)
+
+accountingDep.mostRecentReport = 'Using setter';
+
+console.log(accountingDep.mostRecentReport)
