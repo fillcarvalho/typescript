@@ -23,13 +23,33 @@ type intersectionType = Combinable & Numeric;
 
 // Typeguards are there to help you to identify the type of the variable and decide what you need to do with that
 // MAybe you have functions taht work with different variable types
-function test(a: Combinable, b: Numeric) {
+function test(a: Combinable, b: Combinable) {
   if (typeof a === "number" || typeof b === "number") {
     return a.toString() + b.toString();
   }
 
   return a + b;
 }
+
+// I cannot do that, beucause TS doesn't know what I am returning.
+// It could be a string, but could also be a number
+// const test2 = test('Filipe', ' Max');
+// test.split(' ');
+
+// In order to to that, we need to tell TS that this function might return different types depending on the
+// parameters you pass to it
+function test2(a: string, b: string): string;
+function test2(a: number, b: number): number;
+function test2(a: Combinable, b: Combinable) {
+  if (typeof a === "number" || typeof b === "number") {
+    return a.toString() + b.toString();
+  }
+
+  return a + b;
+}
+
+const test3 = test("Filipe", " Max");
+test3.split(" ");
 
 // There are other typeguards types
 type UnkownEmployee = Employee | Admin;
@@ -104,45 +124,62 @@ interface Horse {
 type Animal = Bird | Horse;
 
 function moveAnimal(animal: Animal) {
-    let speed;
-    switch(animal.type) {
-        case 'bird':
-            speed = animal.flyingSpeed
-            break;
-        case 'horse':
-            speed = animal.runningSpeed
-            break;
-    }
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+    case "horse":
+      speed = animal.runningSpeed;
+      break;
+  }
 
   console.log("Moving the animal with speed:" + speed);
 }
 
-moveAnimal({type: 'bird', flyingSpeed: 10});
-moveAnimal({type: 'horse', runningSpeed: 100});
+moveAnimal({ type: "bird", flyingSpeed: 10 });
+moveAnimal({ type: "horse", runningSpeed: 100 });
 
 // Working with TypeCasting
 // TS knows that P is a Patagtaph because it's a p tag
-const paragraph = document.querySelector('p');
+const paragraph = document.querySelector("p");
 // TS doesn't know the object type because it's returned by ID
-const input = document.getElementById('input');
+const input = document.getElementById("input");
 
 // Would work, but TS doesn't accept because he doesn't know that input is a input
 // input.value = 'Hi there';
 
 // TS now knows the type
-const input2 = <HTMLInputElement>document.getElementById('input');
-const input3 = document.getElementById('input2') as HTMLInputElement;
+const input2 = <HTMLInputElement>document.getElementById("input");
+const input3 = document.getElementById("input2") as HTMLInputElement;
 
-input2.value = 'Hi there 1';
-input3.value = 'Hi there 2';
-
-
-// When you ARE SURE that this will not return null, you can just add a ! in the end
-const input4 = document.getElementById('input3')!;
+input2.value = "Hi there 1";
+input3.value = "Hi there 2";
 
 // When you ARE SURE that this will not return null, you can just add a ! in the end
-const input5 = document.getElementById('input3');
+const input4 = document.getElementById("input3")!;
 
-if ( input5 ) {
-    (input5 as HTMLInputElement).value = 'Hi there 3'
+// When you ARE SURE that this will not return null, you can just add a ! in the end
+const input5 = document.getElementById("input3");
+
+if (input5) {
+  (input5 as HTMLInputElement).value = "Hi there 3";
 }
+
+// Index properties help us to write more flexible code
+
+// Every prop that will be added to this Interface need to be a string, the name and the value
+// You can add new properties to the interface, but they need to have the same type as the prop
+// In this case, it doean'e mather how many properties i have
+interface ErrorContainer {
+  // { email: 'Not a valid e-mail', username: 'Must start with a caracter' }
+  cod: string;
+  [prop: string]: string;
+}
+
+const error: ErrorContainer = {
+  cod: "1",
+  email: "Not a valid e-mail",
+  username: "Must start with a caracter",
+  whatever: "Whatever message",
+};

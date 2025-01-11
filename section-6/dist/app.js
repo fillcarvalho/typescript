@@ -12,6 +12,14 @@ function test(a, b) {
     }
     return a + b;
 }
+function test2(a, b) {
+    if (typeof a === "number" || typeof b === "number") {
+        return a.toString() + b.toString();
+    }
+    return a + b;
+}
+const test3 = test("Filipe", " Max");
+test3.split(" ");
 function printEmployeeInformation(emp) {
     console.log("Empname", emp.name);
     if ("privileges" in emp) {
@@ -56,33 +64,39 @@ useVehicle(v2);
 function moveAnimal(animal) {
     let speed;
     switch (animal.type) {
-        case 'bird':
+        case "bird":
             speed = animal.flyingSpeed;
             break;
-        case 'horse':
+        case "horse":
             speed = animal.runningSpeed;
             break;
     }
     console.log("Moving the animal with speed:" + speed);
 }
-moveAnimal({ type: 'bird', flyingSpeed: 10 });
-moveAnimal({ type: 'horse', runningSpeed: 100 });
+moveAnimal({ type: "bird", flyingSpeed: 10 });
+moveAnimal({ type: "horse", runningSpeed: 100 });
 // Working with TypeCasting
 // TS knows that P is a Patagtaph because it's a p tag
-const paragraph = document.querySelector('p');
+const paragraph = document.querySelector("p");
 // TS doesn't know the object type because it's returned by ID
-const input = document.getElementById('input');
+const input = document.getElementById("input");
 // Would work, but TS doesn't accept because he doesn't know that input is a input
 // input.value = 'Hi there';
 // TS now knows the type
-const input2 = document.getElementById('input');
-const input3 = document.getElementById('input2');
-input2.value = 'Hi there 1';
-input3.value = 'Hi there 2';
+const input2 = document.getElementById("input");
+const input3 = document.getElementById("input2");
+input2.value = "Hi there 1";
+input3.value = "Hi there 2";
 // When you ARE SURE that this will not return null, you can just add a ! in the end
-const input4 = document.getElementById('input3');
+const input4 = document.getElementById("input3");
 // When you ARE SURE that this will not return null, you can just add a ! in the end
-const input5 = document.getElementById('input3');
+const input5 = document.getElementById("input3");
 if (input5) {
-    input5.value = 'Hi there 3';
+    input5.value = "Hi there 3";
 }
+const error = {
+    cod: "1",
+    email: "Not a valid e-mail",
+    username: "Must start with a caracter",
+    whatever: "Whatever message",
+};
