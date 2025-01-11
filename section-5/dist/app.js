@@ -37,7 +37,15 @@ dep1.printEmployeeInformation();
 // const describeMethod2 = {describe: dep1.describe};
 // describeMethod2.describe();
 // You can declare the class properties directly at the constructor
+class departmentAdapter {
+}
 class Department2 {
+    test() {
+        console.log('Method test impplemented');
+    }
+    static createEmployee(name) {
+        return { name: name };
+    }
     // Readyonly add an extra typesafe
     constructor(id, name) {
         this.id = id;
@@ -56,6 +64,7 @@ class Department2 {
         console.log(this.employees);
     }
 }
+Department2.fiscalYear = 2024;
 const dep2 = new Department2(1, "Department 2");
 dep2.describe();
 // Working with inheritance
@@ -73,11 +82,11 @@ class accountingDepartment extends Department2 {
         if (this.lastReport) {
             return this.lastReport;
         }
-        throw new Error('No report found');
+        throw new Error("No report found");
     }
     set mostRecentReport(text) {
         if (!text) {
-            throw new Error('Invalid parameter');
+            throw new Error("Invalid parameter");
         }
         this.addReport(text);
     }
@@ -94,15 +103,17 @@ class accountingDepartment extends Department2 {
         console.log(this.reports);
     }
     addEmployee(employee) {
-        if (employee === 'Filipe') {
+        if (employee === "Filipe") {
             return;
         }
         this.employees.push(employee);
     }
 }
 const accountingDep = new accountingDepartment(4, []);
-accountingDep.addReport('Problem found');
+accountingDep.addReport("Problem found");
 accountingDep.printReports();
 console.log(accountingDep.mostRecentReport);
-accountingDep.mostRecentReport = 'Using setter';
+accountingDep.mostRecentReport = "Using setter";
 console.log(accountingDep.mostRecentReport);
+console.log(Department2.createEmployee("Filipe"));
+console.log(Department2.fiscalYear);
