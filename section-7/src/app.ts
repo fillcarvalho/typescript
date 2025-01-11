@@ -34,3 +34,20 @@ promisse.then((data) => {
     // toUppercase is only valid because TS knows that it will be a string
     console.log(data.toUpperCase())
 })
+
+// GENERIC FUNCTIONS
+function merge( objA: object, objB: object ) {
+    return Object.assign(objA, objB)
+}
+
+const merged = merge({name: 'Filipe'}, {age: 30});
+
+// This would work in JS, but TS doesn't know that
+// console.log(merged.name, merged.age);
+
+// We can do that with Generic Functions
+function merge2<T,U>( objA: T, objB: U ) {
+    return Object.assign(objA, objB)
+}
+
+const merged2 = merge2({name: 'Filipe'}, {age: 30});
