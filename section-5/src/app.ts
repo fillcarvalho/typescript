@@ -1,7 +1,7 @@
 console.log("Section 5");
 
 class Department {
-  name: string;
+  private name: string;
   private employees: string[] = [];
   
   constructor(n: string) {
@@ -47,3 +47,15 @@ dep1.printEmployeeInformation();
 // const describeMethod2 = {describe: dep1.describe};
 // describeMethod2.describe();
 
+// You can declare the class properties directly at the constructor
+class Department2 {
+    constructor( private id: number, private name: string ) {}
+
+    describe( this: Department2 ) {
+        console.log( `Department ${this.id}: ${this.name}` )
+    }
+}
+
+const dep2 = new Department2(1, "Department 2");
+
+dep2.describe();
