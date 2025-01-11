@@ -154,3 +154,8 @@ console.log(accountingDep.mostRecentReport);
 
 console.log(Department2.createEmployee("Filipe"));
 console.log(Department2.fiscalYear);
+
+
+interface AddFn {
+    (a: number, b:number ): number
+}

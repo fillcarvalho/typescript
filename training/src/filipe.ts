@@ -21,6 +21,10 @@ type multipleOptions = 'a' | 'b' | car;
 
 type Combinable = number | string;
 type ConversionDescriptor =  'as-number' | 'as-text';
+type addFn = (a: number, b:number) => number
+interface AddFn {
+    (a: number, b:number ): number
+}
 
 // Declaring object
 type car = {
@@ -82,3 +86,15 @@ washCar(bmw, (car, maxSpeed) => {
 
 const button2 = document.querySelector('button')!;
 button2.addEventListener('click', () => console.log("Adding event"))
+
+
+class Person {
+    name?: string;
+    age = 30;
+    
+    constructor(name: undefined ) {
+        if (name) {
+            this.name = name;
+        }
+    }
+}
